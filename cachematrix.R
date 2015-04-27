@@ -1,6 +1,4 @@
-## Put comments here that give an overall description of what your
-## functions do
-
+##Author: Michael Hunt
 
 ## makeCacheMatrix
 
@@ -48,3 +46,36 @@ cacheSolve <- function(x, ...) {
         x$setinv(m)
         m
 }
+
+##Example
+
+#> x<-matrix(1:4,2,2)
+#> x
+#     [,1] [,2]
+#[1,]    1    3
+#[2,]    2    4
+
+#> xc<-makeCacheMatrix(x)
+#> xc$get()
+#     [,1] [,2]
+#[1,]    1    3
+#[2,]    2    4
+
+#> xinv<-cacheSolve(xc)
+#> xinv
+#     [,1] [,2]
+#[1,]   -2  1.5
+#[2,]    1 -0.5
+
+#> xinv<-cacheSolve(xc)
+#getting cached data
+#> xinv
+#     [,1] [,2]
+#[1,]   -2  1.5
+#[2,]    1 -0.5
+
+#check that xinv really is the inverse of x
+#> xinv %*% x
+#     [,1] [,2]
+#[1,]    1    0
+#[2,]    0    1
